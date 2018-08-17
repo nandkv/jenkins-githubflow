@@ -23,11 +23,8 @@ node {
      }
    }
    stage('Sonar') {
-      // Run the sonar verification
-      stage('Sonar') {
-         // Run the maven build
-         echo "Sonar"
-      }
+      // Run the maven build
+      echo "Running sonar build"
    }
    if(env.BRANCH_NAME == 'develop'){
      stage("Upload"){
