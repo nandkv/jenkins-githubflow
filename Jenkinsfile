@@ -26,17 +26,19 @@ node {
       // Run the maven build
       echo "Running sonar build"
    }
-   stage("Upload"){
-     // Artifact repository upload steps here
-     echo 'Uploaded snapshot to artifactory'
-   }
-   stage("Deploy"){
-     // Deploy steps here
-     echo 'Deployed snapshot to DEV'
-   }
-   stage("Smoke Test"){
-      echo 'Deployed snapshot to DEV'
-   }
+   if(env.BRANCH_NAME == 'master'){
+     stage("Upload"){
+        // Artifact repository upload steps here
+        echo 'Uploaded snapshot to artifactory'
+     }
+     stage("Deploy"){
+        // Deploy steps here
+        echo 'Deployed snapshot to DEV'
+     }
+     stage("Smoke Test"){
+         echo 'Deployed snapshot to DEV'
+     }
+   }   
    if(env.BRANCH_NAME ==~ /release.*/){
      stage("Deploy"){
         echo 'Deployed release to DEV'
