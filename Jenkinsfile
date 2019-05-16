@@ -53,7 +53,7 @@ node {
         echo 'Releasing release version to QA artifactory'
      }
      stage("Approval QA Deploy"){
-        echo 'Release build from QA artifactory to QA'
+        echo 'Release build from QA artifactory to QA Environment'
      }
    }
 
