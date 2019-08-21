@@ -23,8 +23,11 @@ node {
      }
    }
    stage('Sonar') {
-      // Run the maven build
-      echo "Running sonar build"
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' sonar:sonar"
+      } else {
+         bat(/"${mvnHome}\bin\mvn" sonar:sonar/)
+      }
    }
    if(env.BRANCH_NAME == 'master'){
      stage("Upload"){
